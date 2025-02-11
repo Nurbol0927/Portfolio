@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: black;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        .stars-background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            opacity: 0.8;
+            border-radius: 50%;
+            box-shadow: 0 0 5px white;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+        }
+        .intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+        }
+        #enter-btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            background: #ff9800;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        #enter-btn:hover {
+            background: #e68900;
+        }
+        .container {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 1s ease, transform 1s ease;
+            text-align: center;
+            padding: 50px;
+        }
+        .visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+<div class="stars-background"></div>
+<div class="intro">
+    <button id="enter-btn">мени бас</button>
+</div>
+
+<div class="container hidden">
+    <header>
+        <h1>Turatbekov Nurbol Zhoomartovish</h1>
+        <p>Developer</p>
+        <p>Phone: +996 551 564 414</p>
+        <p>Email: <a href="mailto:program.nr@gmail.com">program.nr@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/" target="_blank">linkedin.com/in/Nurbol</a></p>
+        <p>GitHub: <a href="https://github.com/Nurbol0927" target="_blank">github.com/Nurbol0927</a></p>
+    </header>
+
+    <h2>Projects</h2>
+    <table>
+        <tr>
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>Created</th>
+        </tr>
+        <tr>
+            <td>Inventory Manager</td>
+            <td>A tool for managing inventory in warehouses</td>
+            <td>2020-01-01</td>
+        </tr>
+        <tr>
+            <td>Expense Tracker</td>
+            <td>An app for tracking personal expenses</td>
+            <td>2021-01-02</td>
+        </tr>
+        <tr>
+            <td>Task Scheduler</td>
+            <td>A scheduling system for daily tasks</td>
+            <td>2021-01-03</td>
+        </tr>
+        <tr>
+            <td>Weather App</td>
+            <td>Provides weather updates and forecasts</td>
+            <td>2022-01-04</td>
+        </tr>
+        <tr>
+            <td>Online Store</td>
+            <td>E-commerce platform for various products</td>
+            <td>2022-01-05</td>
+        </tr>
+        <tr>
+            <td>Portfolio Website</td>
+            <td>Showcasing personal projects and skills</td>
+            <td>2023-01-06</td>
+        </tr>
+
+
+
+
+    </table>
+
+    <h2>Hobbies</h2>
+    <p>Reading books, learning new things</p>
+</div>
+
+<script>
+    document.getElementById('enter-btn').addEventListener('click', function() {
+        document.querySelector('.intro').style.display = 'none';
+        document.querySelector('.container').classList.add('visible');
+    });
+    function createStars() {
+        const starsContainer = document.querySelector('.stars-background');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * -100}px`;
+            star.style.animationDuration = `${Math.random() * 4 + 2}s`;
+            starsContainer.appendChild(star);
+        }
+    }
+    createStars();
+</script>
+</body>
+</html>
